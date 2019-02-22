@@ -25,6 +25,7 @@ selecting View > Syntax > Open all with current extension as... > Groovy
 task groovy {}
 
 println "Hello Groovy!"
+println "Hello again, Groovy!"
 
 /*
 
@@ -42,14 +43,40 @@ class JavaGreeter {
 JavaGreeter greeter = new JavaGreeter()
 greeter.sayHello()
 
-/*
 
+/* 
+Chris Haller's Addition, just for practice. Throughout the rest of this file, 
+these additions will just be labeled as "CH's Addition"
+*/
+public class CHTester {
+	// Sample Data Member
+	int test_value;
+	// Default, no-args Contrstructor
+	public CHTester(){
+		test_value = 1986;
+	}
+	// Method 
+	public void displayCurValue() {
+		System.out.println("-- CH: The value of the tester is: " + test_value);
+	}
+}
+
+CHTester tester = new CHTester();
+tester.displayCurValue();
+
+/*
 Groovy is dynamically typed, which means type checking happens at runtime.
 That also means you don't need to declare the types of variables.
 
 */
 
 def foo = 6.5
+
+/* CH Addition */
+def zog = "Damn good cherry pie"
+System.out.println("-- CH: zog = " + zog);
+zog = 12
+System.out.println("-- CH: zog = " + zog);
 
 /*
 
@@ -60,6 +87,8 @@ inserted.
 */
 
 println "foo has value: $foo"
+System.out.println('-- CH: zog has the value: ' + zog);
+println "-- CH: zog has the value: $zog"
 
 /*
 
@@ -68,6 +97,8 @@ We can also surround any Groovy code with a dollar sign and curly braces.
 */
 
 println "Let's do some math. 5 + 6 = ${5 + 6}"
+/* CH Addition */
+println "-- CH: ${5 + 6} + ${5 + 6} = ${5 + 6 + 5 + 6}"
 
 /*
 
@@ -79,6 +110,9 @@ type of a variable using `foo.class`.
 println "foo is of type: ${foo.class} and has value: $foo"
 foo = "a string"
 println "foo is now of type: ${foo.class} and has value: $foo"
+
+/* CH Addition */
+println "-- CH: zog is now of type: ${zog.class} and has value: $zog"
 
 /*
 
@@ -97,6 +131,11 @@ def doubleIt(n) {
     n + n // Note we don't need a return statement
 }
 
+/* CH Addition */
+def tripleIt(m) {
+	m + m + m
+}
+
 /*
 
 Note that we don't need to specify the type of the arguments, nor the return
@@ -108,6 +147,10 @@ the block is returned. Let's give it a try.
 foo = 5
 println "doubleIt($foo) = ${doubleIt(foo)}"
 
+/* CH Addition */
+zog = 6
+println "-- CH: tripleIt($zog) = ${tripleIt(zog)}"
+
 /*
 
 Even more interestingly, since the plus sign is overloaded to concatenate
@@ -117,6 +160,10 @@ strings, we can call our function with a string as well.
 
 foo = "foobar"
 println "doubleIt($foo) = ${doubleIt(foo)}"
+
+/* CH Addition */
+zog = "Damn good pie"
+println "--CH: tripleIt($zog) = ${tripleIt(zog)}"
 
 /*
 
@@ -146,3 +193,13 @@ noArgs()
 //noArgs // Doesn't work
 //twoArgs oneArg 500, 200 // Also doesn't work as it's ambiguous
 twoArgs oneArg(500), 200 // Fixed the ambiguity
+
+
+/* CH Addition */
+System.out.print("-- CH: ");
+noArgs()
+print "-- CH: "
+noArgs()
+print "-- CH: "; oneArg 100
+print "-- CH: "; twoArgs 200, 300
+print "-- CH: "; twoArgs oneArg(400), 500
