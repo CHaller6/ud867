@@ -20,6 +20,13 @@ def bar = myClosure
 def baz = bar
 baz()
 
+/* CH Addition */ 
+def echoClosure = {it ->
+	println "-- CH: $it"
+}
+echoClosure("Cherry Pie")
+
+
 /*
 
 Closures have a different notation for arguments.
@@ -27,6 +34,9 @@ Closures have a different notation for arguments.
 */
 
 def doubleIt = { x -> x + x}
+
+/* CH Addition */
+def tripleIt = {m -> m + m + m}
 
 /*
 
@@ -44,6 +54,11 @@ foo = 5
 def fooDoubledTwice = applyTwice(doubleIt, foo)
 println "Applying doubleIt twice to $foo equals $fooDoubledTwice"
 
+/* CH Addition */
+def zog = 10
+def zogTripledTwice = applyTwice(tripleIt, zog)
+println "-- CH: Applying tripleIt twice to $zog = $zogTripledTwice"
+
 /*
 
 A language where functions are just objects that can be passed around is
@@ -59,6 +74,9 @@ declare a list using a literal.
 
 def myList = ["Gradle", "Groovy", "Android"]
 
+/* CH Addition */
+def myList2 = ["Test 1", "Test 2", 1024]
+
 /*
 
 We can execute a closure for each item in the list.
@@ -67,6 +85,11 @@ We can execute a closure for each item in the list.
 
 def printItem = {item -> println "List item: $item"}
 myList.each(printItem)
+
+/* CH Addition */
+def printItem2 = {item -> println "-- CH: List item: $item"}
+myList.each(printItem2)
+myList2.each(printItem2)
 
 /*
 
@@ -111,7 +134,7 @@ def greetingClosure = {
     printGreeting()
 }
 
-// greetingClosure() // This doesn't work, because `greeting` isn't defined
+//greetingClosure() // This doesn't work, because `greeting` isn't defined
 greetingClosure.delegate = myGroovyGreeter
 greetingClosure() // This works as `greeting` is a property of the delegate
 
